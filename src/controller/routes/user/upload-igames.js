@@ -10,6 +10,7 @@ const renameFile = util.promisify(fs.rename);
 const mimeTypes = {
   'image/png': '.png',
   'image/jpeg': '.jpg',
+  'image/webp': '.webp',
 }
 
 const TEMP_IMAGE_FOLDER = path.join(__dirname, '../../../../', 'public');
