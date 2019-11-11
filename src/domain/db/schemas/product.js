@@ -10,12 +10,15 @@ const ProductSchema = mongoose.Schema(
     size: { type: Number, default: 0 },
     image: { type: String, default: "" },
     description: { type: String, default: "" },
-    descriptionFull: { type: String, default: "" },
+    fullDescription: { type: String, default: "" },
     price: { type: Number, default: 0 },
     availability: { type: Number, default: 0 },
     popular: { type: Boolean, default: false },
     description: { type: String, default: "" },
-    purchases: { type: Number, default: 0 }
+    purchases: { type: Number, default: 0 },
+    category: { type: String, default: "" },
+    categories: { type: Array, default: [] },
+    color: { type: Array, default: [] },
   },
   { versionKey: false }
 );
