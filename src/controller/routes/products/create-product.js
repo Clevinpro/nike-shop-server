@@ -52,21 +52,27 @@ const createProduct = (request, response) => {
   console.log('product :', product);
   console.log("request: product", product);
 
-  
-  const fileObject = request.files.image;
-  console.log('request.files___________________', request.files)
-  console.log('body', request.body);
-  console.log('fileObject :', fileObject[0]);
+  let image = '';
 
-  const id = uuidv1();
-  moveImage(fileObject[0], id);
-  const image = USER_IMAGES_FOLDER_NAME + id + mimeTypes[fileObject[0].mimetype];
+  if(request.files.image) {
+
+    const fileObject = request.files.image;
+    console.log('request.files___________________', request.files)
+    console.log('body', request.body);
+    console.log('fileObject :', fileObject[0]);
+  
+    const id = uuidv1();
+    moveImage(fileObject[0], id);
+    image = USER_IMAGES_FOLDER_NAME + id + mimeTypes[fileObject[0].mimetype];
+  }
   
   console.log('image___________________________ :', image);
 
   const productData = { ...product };
+  const categories = JSON.parse(productData.categories);
   productData.image = image;
-
+  // console.log('categories', categories)
+  productData.categories = categories;
   const newProduct = new Product(productData);
 
   const sendResponse = product => {
